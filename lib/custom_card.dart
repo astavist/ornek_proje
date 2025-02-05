@@ -1,0 +1,30 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class CustomCardView extends StatelessWidget {
+  const CustomCardView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.all(20),
+      width: 200,
+      height: 100,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(40),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade200,
+                blurRadius: 5,
+                spreadRadius: 3,
+                offset: Offset(0, 2))
+              ]),
+          alignment: Alignment.center,
+          child: Text('Selamm', style: TextStyle(color: Colors.black)),
+    );
+  }
+}
