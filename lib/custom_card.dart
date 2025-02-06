@@ -11,8 +11,8 @@ class CustomCardView extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(bottom: 20),
       margin: EdgeInsets.all(20),
-      width: 200,
-      height: 100,
+      width: 100,
+      height: 50,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(40),
@@ -23,7 +23,7 @@ class CustomCardView extends StatelessWidget {
                 spreadRadius: 3,
                 offset: Offset(0, 2))
               ]),
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: Text('Selamm', style: TextStyle(color: Colors.black)),
     );
   }
