@@ -1,30 +1,14 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:ornek_proje/custom_card.dart';
+import 'package:ornek_proje/screens/data_screen.dart';
+import 'package:ornek_proje/screens/kedy_screen.dart';
+import 'package:ornek_proje/screens/null_safety_screen.dart';
 import 'package:ornek_proje/screens/second_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int counter = 0;
-
-  void incrementNumber() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  void resetNumber() {
-    setState(() {
-      counter = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomCardView(),
@@ -45,7 +29,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SecondScreen()));
                 },
-                child: Text('ikinci ekran'),
+                child: Text('Builder ve ListView'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade100)),
+            
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => KedyScreen()));
+                },
+                child: Text('Stack ve Stful Widget'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade100)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => NullSafetyScreen()));
+                },
+                child: Text('Null Safety'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade100)),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DataScreen()));
+                },
+                child: Text('JSON Data'),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade100)),
             IconButton(
@@ -55,62 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.deepOrange,
                   size: 60,
                 )),
-            SizedBox(
-              width: 50,
-              height: 50,
-              child: Card(
-                child: Align(alignment: Alignment.center, child: Text('Selam')),
-              ),
-            ),
-            Stack(alignment: Alignment.center, children: [
-              Opacity(
-                opacity: 0.6,
-                child: Image.asset(
-                  'assets/images/kedy.jpg',
-                  width: 200,
-                ),
-              ),
-              Positioned(bottom: 20, left: 110, child: catText()),
-              Positioned(
-                bottom: 20,
-                left: 55,
-                child: GestureDetector(
-                  onTap: () => incrementNumber(),
-                  child: tapButton(),
-                ),
-              ),
-              Positioned(
-                  bottom: 100,
-                  left: 80,
-                  child: GestureDetector(
-                      onTap: () => resetNumber(),
-                       child: resButton())),
-            ])
           ],
         ),
       ),
     );
-  }
-
-  Container resButton() {
-    return Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(60)),
-    );
-  }
-
-  Container tapButton() {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(60)),
-    );
-  }
-
-  Text catText() {
-    return Text(
-      '$counter',
-      style: TextStyle(color: Colors.red, fontSize: 50));
   }
 }
